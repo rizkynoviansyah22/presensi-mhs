@@ -35,7 +35,8 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="20dp"
         android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="#5F6F52"/>
+        app:backgroundTint="#5F6F52"
+        android:contentDescription="Tambah Tugas" />
 
     <LinearLayout
         android:id="@+id/bottomNav"
