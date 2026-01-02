@@ -150,29 +150,72 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/navHome"
             android:layout_width="0dp"
-            android:layout_height="28dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_home"
-            app:tint="@color/text_brown"/>
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageView
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_home"
+                app:tint="#4F6F52"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="10sp"
+                android:textColor="#4F6F52"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/navJadwal"
             android:layout_width="0dp"
-            android:layout_height="28dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_task"
-            app:tint="@color/text_brown"/>
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageView
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_task"
+                app:tint="#8D7B68"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jadwal"
+                android:textSize="10sp"
+                android:textColor="#8D7B68"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/navTask"
             android:layout_width="0dp"
-            android:layout_height="28dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_task"
-            app:tint="@color/text_brown"/>
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_task"
+                app:tint="#8D7B68"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tugas"
+                android:textSize="10sp"
+                android:textColor="#8D7B68"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"

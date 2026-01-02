@@ -17,6 +17,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.tvDaftar.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
         auth = FirebaseAuth.getInstance()
 
         binding.btnLogin.setOnClickListener {
