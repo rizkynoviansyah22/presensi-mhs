@@ -4,12 +4,12 @@ Apk Presensi is a mobile application designed to simplify digital attendance for
 
 ## Team Members
 
-| No | Name               | Role       | GitHub |
-|----|--------------------|-----------|--------|
-| 1  | Vegli Raif Rafi'i  | Developer | https://github.com/vegliraif |
-| 2  | Rizky Noviansyah   | Developer | @rizkynoviansyah22 https://github.com/rizkynoviansyah22 |
-| 3  | Rizqi Adittiya     | Developer | https://github.com/rizqii27 |
-| 4  | Editya Chandra     | Developer | https://github.com/EdityaChandra |
+| Name               | Role       | GitHub |
+|--------------------|------------|--------|
+| Vegli Raif Rafi'i  | Developer  | [@vegliraif](https://github.com/vegliraif) |
+| Rizky Noviansyah   | Developer  | [@rizkynoviansyah22](https://github.com/rizkynoviansyah22) |
+| Rizqi Adittiya     | Developer  | [@rizqii27](https://github.com/rizqii27) |
+| Editya Chandra     | Developer  | [@EdityaChandra](https://github.com/EdityaChandra) |
 
 ## Main Features
 
