@@ -1,69 +1,67 @@
-# Apk Presensi - Sistem Presensi Mahasiswa Berbasis Android
+# Apk Presensi - Student Attendance System
 
-Apk Presensi adalah aplikasi mobile yang dirancang untuk memudahkan mahasiswa dalam melakukan presensi secara digital. Aplikasi ini mengintegrasikan layanan cloud untuk penyimpanan data yang aman dan fitur manajemen tugas sederhana.
+**Apk Presensi** is an Android-based application designed to streamline student attendance management. By leveraging cloud-based services, the app ensures secure data handling, real-time updates, and an intuitive user interface for managing academic schedules and tasks.
 
-## ✨ Fitur Utama
+## 👥 Team Members
 
-Aplikasi ini mencakup berbagai fitur fungsionalitas untuk mendukung kegiatan akademik:
+| **Vegli Raif Rafi'i** | Developer | [@vegliraif](https://github.com/vegliraif) |
+| **Rizky Noviansyah** | Developer | [@rizkynoviansyah22](https://github.com/rizkynoviansyah22) |
+| **Rizqi Adittiya** | Developer | [@rizqii27](https://github.com/rizqii27) |
+| **Editya Chandra** | Developer | [@EdityaChandra](https://github.com/EdityaChandra) |
 
-* **Autentikasi Pengguna**: Login dan pendaftaran mahasiswa menggunakan email.
-* **Presensi Digital**: Fitur utama untuk melakukan absensi kehadiran.
-* **Riwayat Presensi**: Melihat catatan kehadiran yang telah dilakukan sebelumnya.
-* **Manajemen Tugas (Task)**: Fitur untuk melihat atau mengelola daftar tugas.
-* **Jadwal Kuliah**: Akses cepat untuk melihat jadwal perkuliahan.
-* **Profil Pengguna**: Informasi detail mahasiswa dan pengaturan akun.
-* **Auto-Login**: Sistem akan mengingat sesi login pengguna sehingga tidak perlu masuk berulang kali.
+## ✨ Main Features
 
-## 🚀 Teknologi yang Digunakan
+The application provides a comprehensive suite of tools for students:
 
-Proyek ini dibangun menggunakan teknologi modern untuk pengembangan Android:
+* **Secure Authentication**: User registration and login powered by Firebase Authentication.
+* **Digital Attendance**: A dedicated module for recording presence in real-time.
+* **Attendance History**: View a detailed log of past attendance records.
+* **Task Management**: Create and track academic tasks and assignments.
+* **Class Schedule**: View daily or weekly course schedules.
+* **User Profile**: Manage personal information and account details.
+* **Session Persistence**: Automatically remembers logged-in users to provide a seamless experience.
 
-* **Bahasa Pemrograman**: [Kotlin](https://kotlinlang.org/)
-* **Arsitektur & UI**: 
-    * View Binding (untuk interaksi komponen layout yang aman).
-    * Android Jetpack (Activity, ConstraintLayout, ViewModel).
-    * Material Design Components.
-* **Backend & Cloud (Firebase)**:
-    * **Firebase Authentication**: Digunakan untuk sistem login dan pendaftaran pengguna.
-    * **Cloud Firestore**: Basis data NoSQL untuk menyimpan data presensi dan jadwal.
-    * **Firebase Storage**: Digunakan untuk mengunggah dan menyimpan foto (seperti foto bukti absen).
-* **Library Pihak Ketiga**:
-    * **Glide**: Library untuk memproses dan menampilkan gambar dari URL/Cloud Storage secara efisien.
-    * **CardView**: Untuk antarmuka pengguna yang bersih dan modern.
+## 🚀 Technologies Used
 
-## 📋 Prasyarat Instalasi
+This project is built using modern Android development standards:
 
-Sebelum menjalankan proyek ini, pastikan Anda telah memenuhi persyaratan berikut:
+* **Primary Language**: [Kotlin](https://kotlinlang.org/).
+* **UI/UX Framework**: 
+    * **View Binding**: For safe and efficient interaction with layout components.
+    * **Material Design**: Following modern design principles for a clean look.
+    * **ConstraintLayout**: For responsive and flexible UI designs.
+* **Cloud Backend (Firebase)**:
+    * **Firebase Auth**: For secure user management.
+    * **Cloud Firestore**: For storing attendance data and schedules in a NoSQL database.
+    * **Firebase Storage**: For hosting media and documents (e.g., attendance photos).
+* **Libraries**:
+    * **Glide**: For high-performance image loading and caching.
+    * **AndroidX**: For core modern Android components.
 
-1.  **Android Studio** versi terbaru (disarankan Ladybug atau lebih baru).
-2.  **JDK 11** atau versi yang lebih tinggi.
-3.  Perangkat fisik Android atau Emulator dengan **Minimal SDK 24** (Android 7.0 Nougat).
-4.  Akun **Firebase** aktif.
+## 📋 Prerequisites
 
-## 🛠️ Persiapan Proyek
+To set up and run this project, you will need:
 
-1.  **Clone Repositori**:
-    ```bash
-    git clone [https://github.com/rizkynoviansyah22/presensi-mhs.git](https://github.com/rizkynoviansyah22/presensi-mhs.git)
-    ```
-2.  **Konfigurasi Firebase**:
-    * Buat proyek baru di [Firebase Console](https://console.firebase.google.com/).
-    * Daftarkan aplikasi Android Anda dengan paket name `com.project.apkpresensi`.
-    * Unduh file `google-services.json` dan letakkan di dalam folder `app/`.
-    * Aktifkan *Authentication*, *Firestore Database*, dan *Storage* di konsol Firebase.
-3.  **Build Project**: Buka proyek di Android Studio dan sinkronkan Gradle.
+* **Android Studio**: Latest version (e.g., Ladybug or newer).
+* **SDK Platform**: Minimum SDK version 24 (Android 7.0) and Target SDK version 36.
+* **Java Development Kit (JDK)**: Version 11.
+* **Firebase Account**: An active Firebase project to connect the app's backend.
 
-## 📂 Susunan Proyek
+## 📂 Project Structure
 
-Struktur folder utama dalam aplikasi ini adalah sebagai berikut:
+The core logic is organized into specific Activities and Adapters:
 
 ```text
-app/src/main/java/com/project/apkpresensi/
-├── LoginActivity.kt      # Halaman masuk utama pengguna
-├── RegisterActivity.kt   # Halaman pendaftaran akun baru
-├── MainActivity.kt       # Dashboard utama aplikasi
-├── AbsenActivity.kt      # Fitur input presensi
-├── HistoryActivity.kt    # Menampilkan riwayat kehadiran
-├── JadwalActivity.kt     # Menampilkan jadwal perkuliahan
-├── TaskActivity.kt       # Manajemen tugas mahasiswa
-└── ProfileActivity.kt    # Detail informasi pengguna
+com.project.apkpresensi/
+├── AbsenActivity.kt      # Logic for recording attendance
+├── HistoryActivity.kt    # Logic for displaying attendance logs
+├── HistoryAdapter.kt     # Data binding for attendance history lists
+├── JadwalActivity.kt     # Logic for course schedules
+├── JadwalAdapter.kt      # Data binding for schedule lists
+├── LoginActivity.kt      # Main entry point and user login
+├── MainActivity.kt       # Dashboard navigation hub
+├── ProfileActivity.kt    # User profile management
+├── RegisterActivity.kt   # Account creation logic
+├── RekapAdapter.kt       # Data binding for summary views
+├── TaskActivity.kt       # Logic for managing tasks
+└── TaskAdapter.kt       # Data binding for task lists
