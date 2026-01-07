@@ -22,6 +22,9 @@
         android:hint="Nama Mata Kuliah"
         android:background="@android:drawable/edit_text"
         android:layout_marginBottom="12dp"/>
+    <!--Layout dialog_add_task.xml menggunakan LinearLayout dengan orientasi vertikal, padding 24dp, dan background putih
+    sebagai container form. Di dalamnya terdapat TextView sebagai judul dialog "Tambah Tugas Baru" dengan ukuran 20sp dan style bold.
+     Di bawahnya terdapat EditText dengan id etMatkul untuk input nama mata kuliah dengan hint sebagai panduan pengisian. -->
 
     <EditText
         android:id="@+id/etJudul"
@@ -56,5 +59,8 @@
         android:layout_height="wrap_content"
         android:text="SIMPAN TUGAS"
         android:backgroundTint="@color/sage_dark"/>
-
+    <!-- Bagian ini berisi tiga EditText yaitu etJudul untuk input judul tugas, etDeadline untuk memilih tanggal deadline yang diatur
+     tidak dapat diketik langsung (focusable=false) namun dapat diklik untuk menampilkan DatePicker dengan ikon kalender di
+     sebelah kanan, serta etDeskripsi untuk input keterangan singkat. Di bagian bawah terdapat Button dengan id btnSimpanTask
+     berwarna hijau sage untuk menyimpan data tugas ke database.-->
 </LinearLayout>

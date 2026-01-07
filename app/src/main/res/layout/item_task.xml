@@ -24,6 +24,10 @@
             android:scaleX="1.2"
             android:scaleY="1.2"
             android:layout_marginEnd="12dp"/>
+        <!--Layout item_task.xml menggunakan CardView sebagai container utama dengan sudut melengkung 12dp, elevasi 2dp,
+        margin horizontal 16dp dan margin bawah 12dp untuk memberikan jarak antar item. Di dalamnya terdapat LinearLayout horizontal
+        dengan padding 16dp yang berisi CheckBox dengan id cbTask berwarna hijau sage dan diperbesar 1.2 kali dari ukuran normal
+        untuk memudahkan interaksi pengguna. -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -58,6 +62,10 @@
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="2dp"/>
             </LinearLayout>
+            <!-- Bagian ini berisi LinearLayout vertikal dengan layout_weight 1 untuk mengisi sisa ruang di samping checkbox.
+            Di dalamnya terdapat LinearLayout horizontal yang memuat TextView tvMatkul untuk menampilkan nama mata kuliah dengan
+            warna hijau sage dan tvDeadline untuk menampilkan tanggal deadline dengan warna merah (#EF4444) serta background merah muda
+             (#FEE2E2) sebagai penanda visual yang mencolok.-->
 
             <TextView
                 android:id="@+id/tvJudul"
@@ -78,6 +86,9 @@
                 android:layout_marginTop="4dp"
                 android:maxLines="2"
                 android:ellipsize="end"/>
+            <!-- berisi dua TextView yaitu tvJudul untuk menampilkan judul tugas dengan ukuran 16sp dan style bold,
+            serta tvDeskripsi untuk menampilkan keterangan singkat dengan ukuran 13sp, maksimal 2 baris, dan ellipsize end untuk
+            memotong teks yang terlalu panjang dengan tanda titik tiga.-->
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

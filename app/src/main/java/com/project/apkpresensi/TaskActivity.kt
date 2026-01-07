@@ -1,15 +1,25 @@
 package com.project.apkpresensi
-
+//file ini merupakan bagian dari proyek aplikasi presensi mahasiswa
 import android.app.DatePickerDialog
+//menampilkan dialog pemilihan tanggal deadline
 import android.content.Intent
+//navigasi antar halaman aplikasi
 import android.graphics.Canvas
+// keperluan grafis pada fitur swipe
 import android.graphics.Color
+//untuk mengisi area dengan warna solid sebagai background saat item di-swipe
 import android.graphics.drawable.ColorDrawable
+//warna solid untuk background swipe
 import android.os.Bundle
+// container untuk menyimpan dan mengirim data state Activity pada method onCreate
 import android.view.LayoutInflater
+// class untuk mengkonversi file XML layout menjadi objek View saat menampilkan dialog tambah tugas
 import android.widget.Toast
+//komponen untuk menampilkan pesan singkat seperti notifikasi validasi atau pesan error
 import androidx.appcompat.app.AlertDialog
+//container form penambahan tugas baru
 import androidx.appcompat.app.AppCompatActivity
+//base class Activity yang mendukung fitur-fitur modern Android pada berbagai versi
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +31,11 @@ import com.project.apkpresensi.databinding.DialogAddTaskBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+// berfungsi untuk mendukung fitur-fitur utama pada halaman manajemen tugas
+// meliputi komponen antarmuka pengguna, pengelolaan gesture swipe, navigasi antar
+// halaman, integrasi dengan Firebase untuk autentikasi dan database,
+// serta utilitas untuk pengelolaan format tanggal.
+
 
 class TaskActivity : AppCompatActivity() {
 
@@ -31,8 +46,11 @@ class TaskActivity : AppCompatActivity() {
     private val listTask = ArrayList<TaskModel>()
 
     private val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-
-    // Flag untuk mencegah reload saat update status
+    //Class TaskActivity merupakan turunan dari AppCompatActivity() yang menjadi base class untuk
+    // Activity dengan dukungan fitur modern Android. Di dalam class ini terdapat variabel binding untuk
+    // mengakses komponen UI, auth untuk autentikasi Firebase, db untuk akses database Firestore, adapter untuk
+    // menghubungkan data dengan RecyclerView, listTask untuk menyimpan kumpulan data tugas, serta dateFormat
+    // dengan pola "dd-MM-yyyy" untuk parsing tanggal saat proses sorting.
     private var isUpdatingStatus = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +70,10 @@ class TaskActivity : AppCompatActivity() {
             showAddTaskDialog()
         }
     }
+    //Variabel isUpdatingStatus berfungsi sebagai flag untuk mencegah konflik data saat proses update status
+    // tugas sedang berlangsung. Method onCreate() merupakan method utama yang dipanggil saat Activity pertama kali dibuat,
+    // di dalamnya dilakukan inisialisasi View Binding, Firebase Auth, Firebase Firestore, pengaturan RecyclerView,
+    // fitur swipe-to-delete, navigasi bawah, pemuatan data tugas dari database, serta listener pada tombol tambah tugas.
 
     private fun setupRecyclerView() {
         binding.rvTask.layoutManager = LinearLayoutManager(this)
@@ -60,6 +82,10 @@ class TaskActivity : AppCompatActivity() {
         }
         binding.rvTask.adapter = adapter
     }
+    //setupRecyclerView() berfungsi untuk mengkonfigurasi RecyclerView dengan mengatur LinearLayoutManager
+    // sebagai layout manager untuk menampilkan daftar tugas secara vertikal, menginisialisasi TaskAdapter
+    // dengan data listTask beserta callback untuk menangani perubahan status tugas, kemudian menghubungkan
+    // adapter tersebut ke RecyclerView.
 
     private fun setupSwipeToDelete() {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
@@ -93,6 +119,11 @@ class TaskActivity : AppCompatActivity() {
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.rvTask)
     }
+    //setupSwipeToDelete() berfungsi untuk mengimplementasikan fitur hapus tugas dengan gesture swipe ke kiri
+    // atau kanan menggunakan ItemTouchHelper. Ketika item di-swipe, sistem akan menghapus data dari list lokal
+    // dan memperbarui tampilan, kemudian menghapus dokumen dari Firebase Firestore. Jika penghapusan berhasil
+    // akan menampilkan Snackbar konfirmasi, namun jika gagal maka data akan dikembalikan ke posisi semula dan
+    // menampilkan pesan error melalui Toast.
 
     private fun updateTaskStatus(task: TaskModel, position: Int) {
         isUpdatingStatus = true
@@ -114,6 +145,10 @@ class TaskActivity : AppCompatActivity() {
                 Toast.makeText(this, "Gagal update status", Toast.LENGTH_SHORT).show()
             }
     }
+    //updateTaskStatus() berfungsi untuk memperbarui status penyelesaian tugas ke Firebase Firestore.
+    // Saat proses update dimulai, flag isUpdatingStatus diaktifkan untuk mencegah konflik data. Jika berhasil,
+    // sistem akan menunggu 300 milidetik sebelum melakukan sorting agar animasi visual selesai terlebih dahulu.
+    // Jika gagal, status tugas akan dikembalikan ke kondisi semula dan menampilkan pesan error.
 
     private fun sortAndRefresh() {
         listTask.sortWith { o1, o2 ->
@@ -128,6 +163,9 @@ class TaskActivity : AppCompatActivity() {
         }
         adapter.notifyDataSetChanged()
     }
+    //sortAndRefresh() berfungsi untuk mengurutkan daftar tugas berdasarkan dua kriteria yaitu tugas yang belum selesai
+    // akan ditampilkan di bagian atas, kemudian diurutkan berdasarkan deadline terdekat. Setelah proses sorting selesai,
+    // adapter akan memperbarui tampilan RecyclerView.
 
     private fun loadTasks() {
         val uid = auth.currentUser?.uid ?: return
@@ -156,6 +194,11 @@ class TaskActivity : AppCompatActivity() {
                 sortAndRefresh()
             }
     }
+    //loadTasks() berfungsi untuk mengambil data tugas dari Firebase Firestore berdasarkan userId pengguna yang sedang login.
+    // Method ini menggunakan addSnapshotListener sehingga data akan diperbarui secara real-time setiap ada perubahan di database.
+    // Terdapat pengecekan flag isUpdatingStatus untuk mencegah konflik saat proses update status sedang berlangsung.
+    // Data yang berhasil diambil kemudian dikonversi ke objek TaskModel dan ditambahkan ke listTask, lalu dilakukan sorting
+    // dan refresh tampilan.
 
     private fun showAddTaskDialog() {
         val dialogBinding = DialogAddTaskBinding.inflate(LayoutInflater.from(this))
@@ -171,6 +214,10 @@ class TaskActivity : AppCompatActivity() {
             dpd.datePicker.minDate = System.currentTimeMillis() - 1000
             dpd.show()
         }
+        //showAddTaskDialog() berfungsi untuk menampilkan dialog form penambahan tugas baru menggunakan AlertDialog
+        // dengan layout DialogAddTaskBinding. Pada field deadline terdapat listener yang akan menampilkan DatePickerDialog
+        // ketika diklik, dengan pengaturan tanggal minimal adalah hari ini agar pengguna tidak dapat memilih tanggal yang
+        // sudah lewat. Tanggal yang dipilih kemudian diformat menjadi "dd-MM-yyyy" dan ditampilkan pada EditText deadline.
 
         dialogBinding.btnSimpanTask.setOnClickListener {
             val matkul = dialogBinding.etMatkul.text.toString().trim()
@@ -182,6 +229,10 @@ class TaskActivity : AppCompatActivity() {
                 Toast.makeText(this, "Judul & Deadline wajib diisi!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            //Pada bagian ini terdapat listener untuk tombol simpan yang akan mengambil nilai input dari form yaitu mata kuliah,
+            // judul, deadline, dan deskripsi. Sebelum data disimpan, dilakukan validasi untuk memastikan field judul dan
+            // deadline tidak kosong. Jika validasi gagal, sistem akan menampilkan pesan peringatan melalui Toast dan proses
+            // penyimpanan dibatalkan.
 
             dialogBinding.btnSimpanTask.isEnabled = false
             dialogBinding.btnSimpanTask.text = "Menyimpan..."
@@ -210,12 +261,19 @@ class TaskActivity : AppCompatActivity() {
         }
         dialog.show()
     }
+    //Data tugas baru kemudian disusun dalam bentuk HashMap yang berisi userId, matkul, judul, deadline, deskripsi,
+    // status isDone dengan nilai false, serta timestamp pembuatan. Data tersebut selanjutnya disimpan ke Firebase Firestore
+    // collection "tasks". Jika berhasil akan menampilkan pesan sukses dan menutup dialog, namun jika gagal akan
+    // menampilkan pesan error dan mengaktifkan kembali tombol simpan.
 
     private fun setupBottomNav() {
         binding.navHome.setOnClickListener { navigateTo(MainActivity::class.java) }
         binding.navJadwal.setOnClickListener { navigateTo(JadwalActivity::class.java) }
         binding.navProfile.setOnClickListener { navigateTo(ProfileActivity::class.java) }
     }
+    //setupBottomNav() berfungsi untuk mengatur listener pada setiap menu bottom navigation.
+    // Ketika menu Home, Jadwal, atau Profil diklik, sistem akan memanggil method navigateTo() untuk berpindah ke
+    // Activity yang sesuai yaitu MainActivity, JadwalActivity, atau ProfileActivity.
 
     private fun navigateTo(cls: Class<*>) {
         startActivity(Intent(this, cls))
@@ -223,3 +281,6 @@ class TaskActivity : AppCompatActivity() {
         finish()
     }
 }
+//navigateTo() berfungsi untuk melakukan perpindahan halaman ke Activity lain yang ditentukan melalui parameter class.
+// Perpindahan dilakukan tanpa animasi transisi menggunakan overridePendingTransition(0, 0) agar terasa lebih responsif,
+// kemudian Activity saat ini ditutup dengan memanggil finish().

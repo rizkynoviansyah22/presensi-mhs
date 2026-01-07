@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FDFBF9">
+    <!-- Layout activity_task.xml menggunakan RelativeLayout sebagai parent container dengan lebar dan tinggi memenuhi seluruh layar.
+    Background layout diatur dengan warna krem muda (#FDFBF9) untuk memberikan tampilan yang nyaman dipandang dan
+    konsisten dengan tema aplikasi.-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,6 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
+    <!--berisi LinearLayout dengan orientasi vertikal yang ditempatkan di atas bottom navigation dan memiliki padding 20dp.
+    Di dalamnya terdapat TextView sebagai judul halaman "Daftar Tugas" dengan warna coklat tua (#403A34), ukuran 24sp,
+    dan style bold. Di bawahnya terdapat RecyclerView dengan id rvTask yang memenuhi sisa ruang untuk menampilkan daftar tugas.-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAdd"
@@ -47,25 +53,102 @@
         android:elevation="16dp"
         android:gravity="center"
         android:orientation="horizontal">
+        <!--Bagian ini berisi FloatingActionButton dengan id fabAdd yang ditempatkan di pojok kanan bawah di atas bottom navigation
+         dengan margin 20dp, menggunakan ikon tambah dan warna hijau sage (#5F6F52). Di bawahnya terdapat LinearLayout sebagai
+         bottom navigation dengan tinggi 70dp, background putih, elevasi 16dp untuk efek bayangan, dan orientasi horizontal untuk
+         menampung menu navigasi secara sejajar.-->
 
-        <LinearLayout android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@drawable/ic_home" app:tint="#8D7B68"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Home" android:textSize="10sp" android:textColor="#8D7B68"/>
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_home"
+                app:tint="#8D7B68" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="#8D7B68"
+                android:textSize="10sp" />
         </LinearLayout>
 
-        <LinearLayout android:id="@+id/navJadwal" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@drawable/ic_task" app:tint="#8D7B68"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Jadwal" android:textSize="10sp" android:textColor="#8D7B68"/>
+        <LinearLayout
+            android:id="@+id/navJadwal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_task"
+                app:tint="#8D7B68" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jadwal"
+                android:textColor="#8D7B68"
+                android:textSize="10sp" />
         </LinearLayout>
 
-        <LinearLayout android:id="@+id/navTask" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@drawable/ic_task" app:tint="#4F6F52"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tugas" android:textSize="10sp" android:textColor="#4F6F52" android:textStyle="bold"/>
+        <LinearLayout
+            android:id="@+id/navTask"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_task"
+                app:tint="#4F6F52" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tugas"
+                android:textColor="#4F6F52"
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout android:id="@+id/navProfile" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@drawable/ic_person" app:tint="#8D7B68"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Profil" android:textSize="10sp" android:textColor="#8D7B68"/>
+        <LinearLayout
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_person"
+                app:tint="#8D7B68" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profil"
+                android:textColor="#8D7B68"
+                android:textSize="10sp" />
         </LinearLayout>
+        <!--Bagian ini berisi FloatingActionButton dengan id fabAdd yang ditempatkan di pojok kanan bawah di atas bottom
+        navigation dengan margin 20dp, menggunakan ikon tambah dan warna hijau sage (#5F6F52). Di bawahnya terdapat LinearLayout
+        sebagai bottom navigation dengan tinggi 70dp, background putih, elevasi 16dp untuk efek bayangan, dan orientasi horizontal
+         untuk menampung menu navigasi secara sejajar. -->
     </LinearLayout>
 </RelativeLayout>
